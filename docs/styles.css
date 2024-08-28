@@ -3,6 +3,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #f4f4f4;
 }
 
 header {
@@ -10,9 +17,16 @@ header {
     color: #fff;
     padding: 1rem;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.index {
+header.dark-mode {
+    background-color: #1f1f1f;
+}
+
+#index {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -26,11 +40,16 @@ header {
     margin: 1rem;
     padding: 1rem;
     width: 300px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
 }
 
 .webpage:hover {
     transform: scale(1.05);
+}
+
+.webpage.dark-mode {
+    background-color: #1f1f1f;
+    border-color: #333;
 }
 
 a {
@@ -50,4 +69,9 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    transition: background-color 0.3s;
+}
+
+footer.dark-mode {
+    background-color: #1f1f1f;
 }
