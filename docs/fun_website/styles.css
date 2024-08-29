@@ -5,6 +5,12 @@ body {
     padding: 0;
     background-color: #f0f8ff;
     color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #f0f8ff;
 }
 
 header {
@@ -14,18 +20,54 @@ header {
     text-align: center;
 }
 
+header.dark-mode {
+    background-color: #444;
+}
+
+.switch {
+    position: absolute;
+    top: 5em;
+    right: 5em;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider:before {
+    content: "";	
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px);
+}
+
 main {
-    padding: 2em;
+    padding: 10em;
 }
 
-h1, h2 {
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 
 ul {
     list-style-type: none;
@@ -42,4 +84,67 @@ li {
 
 li:hover {
     transform: scale(1.1);
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-out:hover {
+    animation: fadeOut 3s ease-out-in;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.slide-in {
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotate {
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse:hover {
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes textPulse {
+    0% {
+        transform: scale(1);
+        color: #333;
+    }
+    50% {
+        transform: scale(1.5);
+        color: #ff6347;
+    }
+    100% {
+        transform: scale(1);
+        color: #333;
+    }
+}
+
+.pulse-text:hover {
+    display: inline-block;
+    animation: textPulse 0.5s infinite;
 }
