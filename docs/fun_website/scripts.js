@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const header = document.querySelector('header');
 
-    themeToggle.addEventListener('change', () => {
+    themeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
         header.classList.toggle('dark-mode');
     });

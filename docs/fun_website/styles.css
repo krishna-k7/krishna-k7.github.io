@@ -25,43 +25,66 @@ header.dark-mode {
 }
 
 .switch {
-    position: absolute;
-    top: 5em;
-    right: 5em;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
-.switch input {
-    display: none;
+button.pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: none;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+button.pulse:hover {
+    animation: textPulse 10s infinite;
+}
+
+@keyframes textPulse {
+    0% {
+        transform: scale(1);
+        background-color: #000;
+    }
+    25% {
+        transform: scale(2);
+        background-color: #000;
+    }
+    50% {
+        transform: scale(3);
+        background-color: #000;
+    }
+    75% {
+        transform: scale(4);
+        background-color: #000;
+    }
+    100% {
+        transform: scale(20);
+        background-color: #000;
+    }
 }
 
 .slider {
-    position: relative;
-    width: 50px;
-    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #fff;
-    border-radius: 25px;
-    cursor: pointer;
+    border-radius: 34px;
     transition: background-color 0.3s;
 }
 
-.slider:before {
-    content: "";	
-    position: absolute;
-    width: 21px;
-    height: 21px;
-    background-color: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s;
-}
-
-input:checked + .slider {
+button.pulse:active + .slider {
     background-color: #66bb6a;
-}
-
-input:checked + .slider:before {
-    transform: translateX(25px);
 }
 
 main {
@@ -148,3 +171,4 @@ li:hover {
     display: inline-block;
     animation: textPulse 0.5s infinite;
 }
+
