@@ -43,7 +43,12 @@ const gameState = {
   player: {
     currentLevel: 0,
     score: 0,
-    progress: [false, false]
+    progress: [false, false],
+    x: 0,
+    y: 0,
+    velocityX: 0,
+    velocityY: 0,
+    gravity: 0.5
   },
   leaderboard: [
     { name: 'Player 1', score: 100 },
@@ -59,6 +64,13 @@ function updateGame() {
   const layout = level.layout;
   const obstacles = level.obstacles;
   const challenges = level.challenges;
+
+  // Apply gravity
+  player.velocityY += player.gravity;
+
+  // Update the player position
+  player.x += player.velocityX;
+  player.y += player.velocityY;
 
   // Check for collisions with obstacles
   for (const obstacle of obstacles) {
@@ -113,6 +125,28 @@ function renderGame() {
     ctx.fillRect(challenge.x * 20, challenge.y * 20, 20, 20);
   }
 }
+
+// Handle user input
+document.addEventListener('keydown', (event) => {
+  const player = gameState.player;
+  switch (event.key) {
+    case 'ArrowUp':
+      player.velocityY = -5;
+      break;
+    case 'ArrowDown':
+      player.velocityY = 5;
+      break;
+    case 'ArrowLeft':
+      player.velocityX = -5;
+      break;
+    case 'ArrowRight':
+      player.velocityX = 5;
+      break;
+    case ' ':
+      player.gravity = -player.gravity;
+      break;
+  }
+});
 
 // Main game loop
 function gameLoop() {
